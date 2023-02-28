@@ -32,7 +32,7 @@ class clockIn():
         # 加载配置
         options = Options()
         optionsList = [
-            # "--headless",
+            "--headless",
             # "--disable-gpu",
             "--enable-javascript",
             "start-maximized",
