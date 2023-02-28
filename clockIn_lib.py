@@ -1,6 +1,7 @@
 import datetime
 import json
 import os
+import platform
 import time
 import traceback
 
@@ -51,6 +52,8 @@ class clockIn():
             "excludeSwitches",
             ["ignore-certificate-errors", "enable-automation"])
         options.keep_alive = True
+
+
 
         self.driver = selenium.webdriver.Chrome(options=options)
 
@@ -126,8 +129,15 @@ class clockIn():
 
         start = datetime.datetime.now()
 
-        # self.titlewait.until(EC.title_contains("统一身份认证"))
-        self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
+        # 获取当前的操作系统
+        system = platform.system()
+        # 如果是Ubuntu
+        if system == 'Linux':
+            self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
+        else:
+            self.titlewait.until(EC.title_contains("统一身份认证"))
+
+
         # time.sleep(10)
 
         end = datetime.datetime.now()
