@@ -126,12 +126,14 @@ class clockIn():
 
         start = datetime.datetime.now()
 
-        self.titlewait.until(EC.title_contains("统一身份认证"))
-        # self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
+        # self.titlewait.until(EC.title_contains("统一身份认证"))
+        self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
         # time.sleep(10)
 
         end = datetime.datetime.now()
         logger.info('等待时间: ' + str((end - start).seconds))
+
+
 
         logger.info('标题2: ' + self.driver.title)
 
@@ -268,7 +270,7 @@ class clockIn():
 
 
 # 限制10分钟内，必须运行完成，否则失败处理
-@func_set_timeout(60 * 10)
+@func_set_timeout(60 * 2)
 def main():
     cl = clockIn()
     cl()
