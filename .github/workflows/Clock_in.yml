@@ -1,0 +1,34 @@
+name: Clock_in
+
+on:
+  schedule:
+    # UTC时间，比中国时间慢8h, 昨天22:30 -> 今天6:30
+    # 翻译：每周一、五、六的22:30触发，即中国时间，每周三、六、七的6:30触发
+    - cron: '30 22 * * 2,4,5'
+#    - cron: '30 22 * * 4,5'
+
+  workflow_dispatch:
+
+jobs:
+  Clock_in:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out this repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Install packages 
+        run: pip3 install -r requirements.txt
+
+      - name: Run the script
+        env:
+          XUHAO: ${{ secrets.XUHAO }}
+          SEATNO: ${{ secrets.SEATNO }}
+          MIMA: ${{ secrets.MIMA }}
+          PUSHPLUS: ${{ secrets.PUSHPLUS }}
+        run: python clockIn_gzhu.py
