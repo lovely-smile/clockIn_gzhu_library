@@ -31,4 +31,4 @@ jobs:
           SEATNO: ${{ secrets.SEATNO }}
           MIMA: ${{ secrets.MIMA }}
           PUSHPLUS: ${{ secrets.PUSHPLUS }}
-        run: python clockIn_gzhu.py
+        run: python clockIn_lib.py
