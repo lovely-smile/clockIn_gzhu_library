@@ -32,8 +32,9 @@ class clockIn():
         # 加载配置
         options = Options()
         optionsList = [
-            "--headless",
+            # "--headless",
             # "--disable-gpu",
+            "--lang=zh-CN",
             "--enable-javascript",
             "start-maximized",
             "--disable-extensions",
@@ -110,9 +111,6 @@ class clockIn():
         """转到图书馆界面
         """
         logger.info('step0 正在转到转到图书馆界面')
-        # self.driver.get(
-        #     'https://newcas.gzhu.edu.cn/cas/login?service=https%3A%2F%2Fnewmy.gzhu.edu.cn%2Fup%2Fview%3Fm%3Dup'
-        # )
 
         self.driver.get('''
                 https://newcas.gzhu.edu.cn/cas/login?service=http://libbooking.gzhu.edu.cn/#/ic/home
@@ -124,8 +122,14 @@ class clockIn():
 
         logger.info('标题1: ' + self.driver.title)
 
-        self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
+        # 计算时间
 
+        start = datetime.datetime.now()
+
+        self.titlewait.until(EC.title_contains("统一身份认证"))
+
+        end = datetime.datetime.now()
+        logger.info('等待时间: ' + str((end - start).seconds))
 
         logger.info('标题2: ' + self.driver.title)
 
@@ -138,7 +142,7 @@ class clockIn():
                 (By.XPATH, "//div[@class='robot-mag-win small-big-small']")))
 
         logger.info('step1 正在尝试登陆统一身份认证')
-        logger.info('标题: ', self.driver.title)
+        logger.info('标题: ' + self.driver.title)
 
         for script in [
             f"document.getElementById('un').value='{self.xuhao}'",
@@ -168,7 +172,11 @@ class clockIn():
             # 尝试访问
             self.driver.get("http://libbooking.gzhu.edu.cn/#/ic/home")
 
-            time.sleep(2)
+            # 计算时间
+            start = datetime.datetime.now()
+            time.sleep(5)
+            end = datetime.datetime.now()
+            logger.info('等待时间: ' + str((end - start).seconds))
 
             self.step3()
             return
