@@ -32,7 +32,7 @@ class clockIn():
         # 加载配置
         options = Options()
         optionsList = [
-            "--headless",
+            # "--headless",
             # "--disable-gpu",
             "--lang=zh-CN",
             "--enable-javascript",
@@ -127,7 +127,8 @@ class clockIn():
         start = datetime.datetime.now()
 
         # self.titlewait.until(EC.title_contains("统一身份认证"))
-        time.sleep(10)
+        self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
+        # time.sleep(10)
 
         end = datetime.datetime.now()
         logger.info('等待时间: ' + str((end - start).seconds))
@@ -153,7 +154,7 @@ class clockIn():
             self.driver.execute_script(script)
 
     def step2(self):
-        """转到学生健康状况申报页面
+        """正在转到图书馆界面
         """
         wait = WebDriverWait(self.driver, 10)
         wait.until(EC.title_contains("Information Commons"))
