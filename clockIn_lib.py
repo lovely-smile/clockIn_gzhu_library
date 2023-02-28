@@ -126,7 +126,7 @@ class clockIn():
 
         start = datetime.datetime.now()
 
-        self.titlewait.until(EC.title_contains("统一身份认证"))
+        self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
 
         end = datetime.datetime.now()
         logger.info('等待时间: ' + str((end - start).seconds))
