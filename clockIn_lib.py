@@ -54,7 +54,7 @@ class clockIn():
         self.driver = selenium.webdriver.Chrome(options=options)
 
         self.wdwait = WebDriverWait(self.driver, 30)
-        self.titlewait = WebDriverWait(self.driver, 5)
+        self.titlewait = WebDriverWait(self.driver, 20)
 
         # self.page用来表示当前页面标题，0表示初始页面
         self.page = 0
@@ -125,8 +125,7 @@ class clockIn():
         logger.info('标题1: ' + self.driver.title)
 
         self.titlewait.until(
-            EC.title_contains("Unified Identity Authentication") or
-            EC.title_contains("统一身份认证")
+            EC.title_contains("Unified Identity Authentication")
         )
 
 
