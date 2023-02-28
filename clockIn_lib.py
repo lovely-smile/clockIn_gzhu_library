@@ -133,8 +133,10 @@ class clockIn():
         system = platform.system()
         # 如果是Ubuntu
         if system == 'Linux':
+            logger.info("当前操作系统为Linux")
             self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
         else:
+            logger.info("当前操作系统为非Linux")
             self.titlewait.until(EC.title_contains("统一身份认证"))
 
 
