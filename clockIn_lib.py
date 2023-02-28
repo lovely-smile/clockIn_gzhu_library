@@ -125,9 +125,10 @@ class clockIn():
         logger.info('标题1: ' + self.driver.title)
 
         self.titlewait.until(
-            EC.title_contains("统一身份认证") or
-            EC.title_contains("Unified Identity Authentication")
+            EC.title_contains("Unified Identity Authentication") or
+            EC.title_contains("统一身份认证")
         )
+
 
         logger.info('标题2: ' + self.driver.title)
 
