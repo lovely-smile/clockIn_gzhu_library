@@ -280,7 +280,7 @@ class clockIn():
 
 
 # 限制10分钟内，必须运行完成，否则失败处理
-@func_set_timeout(60 * 2)
+@func_set_timeout(60 * 3)
 def main():
     cl = clockIn()
     cl()
