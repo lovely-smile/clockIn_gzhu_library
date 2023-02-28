@@ -32,7 +32,7 @@ class clockIn():
         # 加载配置
         options = Options()
         optionsList = [
-            # "--headless",
+            "--headless",
             # "--disable-gpu",
             "--lang=zh-CN",
             "--enable-javascript",
@@ -126,8 +126,8 @@ class clockIn():
 
         start = datetime.datetime.now()
 
-        # self.titlewait.until(EC.title_contains("统一身份认证"))
-        self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
+        self.titlewait.until(EC.title_contains("统一身份认证"))
+        # self.titlewait.until(EC.title_contains("Unified Identity Authentication"))
         # time.sleep(10)
 
         end = datetime.datetime.now()
